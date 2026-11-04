@@ -37,6 +37,23 @@ class ChildAreaTest extends TestCase
             ->assertSee(route('child.mailbox'), false);
     }
 
+    public function test_aunt_photo_can_be_enlarged_by_the_child(): void
+    {
+        User::factory()->create(['name' => 'Tante Carmen', 'photo_path' => 'profile/p.jpg']);
+
+        $this->get(route('child.dashboard'))
+            ->assertOk()
+            ->assertSee('Foto von Tante Carmen vergrößern')
+            ->assertSee('aria-label="Foto schließen"', false);
+    }
+
+    public function test_without_a_photo_nothing_can_be_enlarged(): void
+    {
+        User::factory()->create(['name' => 'Tante Carmen', 'photo_path' => null]);
+
+        $this->get(route('child.dashboard'))->assertOk()->assertDontSee('vergrößern');
+    }
+
     public function test_mailbox_tile_hops_only_while_unread_videos_exist(): void
     {
         $aunt = User::factory()->create();

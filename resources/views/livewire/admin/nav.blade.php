@@ -12,7 +12,7 @@
         </form>
     </div>
 
-    <nav class="mt-4 flex gap-1 overflow-x-auto" aria-label="Admin-Navigation">
+    <nav class="mt-4 flex flex-wrap gap-1" aria-label="Admin-Navigation">
         @php
             $tabs = [
                 'books' => ['Bücher', route('admin.home')],

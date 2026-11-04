@@ -45,6 +45,9 @@
         @case('check')
             <path d="M4 12l6 6L20 6" stroke-width="3"/>
             @break
+        @case('close')
+            <path d="M5 5l14 14M19 5L5 19" stroke-width="3"/>
+            @break
         @case('camera')
             <path d="M3 7h4l2-3h6l2 3h4v13H3z"/><circle cx="12" cy="13" r="4"/>
             @break
