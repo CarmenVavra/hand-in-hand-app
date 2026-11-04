@@ -4,13 +4,15 @@
         <h1 class="mt-1 text-[26px] leading-tight font-black">Neue Nachricht für die Kleine</h1>
     </div>
 
-    <form wire:submit="save" class="flex flex-col">
+    {{-- Upload-Status selbst verwalten: Livewires wire:loading bleibt nach einem fehlgeschlagenen Upload hängen --}}
+    <form wire:submit="save" class="flex flex-col"
+          x-data="{ uploading: false, failed: false, progress: 0 }"
+          x-on:livewire-upload-start="uploading = true; failed = false; progress = 0"
+          x-on:livewire-upload-finish="uploading = false"
+          x-on:livewire-upload-error="uploading = false; failed = true"
+          x-on:livewire-upload-progress="progress = $event.detail.progress">
         <div class="space-y-5 p-5">
-            <div x-data="{ uploading: false, progress: 0 }"
-                 x-on:livewire-upload-start="uploading = true; progress = 0"
-                 x-on:livewire-upload-finish="uploading = false"
-                 x-on:livewire-upload-error="uploading = false"
-                 x-on:livewire-upload-progress="progress = $event.detail.progress">
+            <div>
                 <span class="field-label" id="file-label">1 · Video oder Sprachnachricht</span>
 
                 <label for="file"
@@ -30,6 +32,9 @@
                     <div class="h-full bg-ink" x-bind:style="'width:' + progress + '%'"></div>
                 </div>
                 <p class="mt-2 text-xs text-mute">Höchstens {{ $maxMb }} MB. Kurze Clips (10–20 Sekunden) passen am besten.</p>
+                <p x-show="failed" x-cloak class="mt-2 text-sm font-bold text-tomato" role="alert">
+                    Der Upload hat nicht geklappt – die Datei ist vermutlich zu groß (höchstens {{ $maxMb }} MB). Bitte eine kürzere Datei wählen.
+                </p>
                 @error('file') <p class="mt-2 text-sm font-bold text-tomato" role="alert">{{ $message }}</p> @enderror
             </div>
 
@@ -42,7 +47,8 @@
 
         <div class="flex gap-2.5 border-t-2 border-ink px-5 py-4">
             <a href="{{ route('admin.messages') }}" class="btn btn-plain flex-1 justify-start py-4 text-[15px]">Abbrechen</a>
-            <button type="submit" @disabled(! $file) wire:loading.attr="disabled" wire:target="save,file"
+            <button type="submit" x-bind:disabled="uploading || failed || ! $wire.file"
+                    wire:loading.attr="disabled" wire:target="save"
                     class="btn btn-go flex-[2] justify-start py-4 text-[15px]">
                 <span wire:loading.remove wire:target="save">In den Postkasten legen</span>
                 <span wire:loading wire:target="save">Wird gesendet …</span>

@@ -7,10 +7,10 @@
     <form wire:submit="save" class="flex flex-col">
         <div class="space-y-5 p-5">
             {{-- 1 · Foto --}}
-            <div x-data="{ uploading: false, progress: 0 }"
-                 x-on:livewire-upload-start="uploading = true; progress = 0"
+            <div x-data="{ uploading: false, failed: false, progress: 0 }"
+                 x-on:livewire-upload-start="uploading = true; failed = false; progress = 0"
                  x-on:livewire-upload-finish="uploading = false"
-                 x-on:livewire-upload-error="uploading = false"
+                 x-on:livewire-upload-error="uploading = false; failed = true"
                  x-on:livewire-upload-progress="progress = $event.detail.progress">
                 <span class="field-label" id="photo-label">1 · Foto</span>
 
@@ -33,6 +33,9 @@
                 <div x-show="uploading" x-cloak class="mt-2 h-2 bg-line" role="progressbar" aria-label="Foto wird hochgeladen">
                     <div class="h-full bg-ink" x-bind:style="'width:' + progress + '%'"></div>
                 </div>
+                <p x-show="failed" x-cloak class="mt-2 text-sm font-bold text-tomato" role="alert">
+                    Der Upload hat nicht geklappt – das Foto ist vermutlich zu groß. Bitte ein kleineres wählen.
+                </p>
                 @error('photo') <p class="mt-2 text-sm font-bold text-tomato" role="alert">{{ $message }}</p> @enderror
             </div>
 

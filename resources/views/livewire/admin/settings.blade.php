@@ -32,7 +32,7 @@
             @error('photo') <p class="mt-1 text-sm font-bold text-tomato" role="alert">{{ $message }}</p> @enderror
         </div>
 
-        <button type="submit" class="btn btn-go" wire:loading.attr="disabled" wire:target="saveProfile,photo">Speichern</button>
+        <button type="submit" class="btn btn-go" wire:loading.attr="disabled" wire:target="saveProfile">Speichern</button>
     </form>
 
     {{-- Passwort --}}
