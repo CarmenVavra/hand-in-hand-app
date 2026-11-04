@@ -11,7 +11,7 @@
         <section>
             <h2 class="text-base font-extrabold">1. Verantwortliche Stelle</h2>
             <p class="mt-2">
-                {{ $legal['name'] ?: '[LEGAL_NAME]' }}, {{ $legal['street'] ?: '[LEGAL_STREET]' }},
+                {{ $legal['name'] ?: '[LEGAL_NAME]' }},
                 {{ $legal['city'] ?: '[LEGAL_CITY]' }}, {{ $legal['country'] }}<br>
                 E-Mail: {{ $legal['email'] ?: '[LEGAL_EMAIL]' }}
             </p>

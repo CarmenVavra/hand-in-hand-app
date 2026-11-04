@@ -259,11 +259,9 @@ HIH_POLL_SECONDS=20
 
 # Impressum & Datenschutz (mit "bash deploy.sh env LEGAL_NAME=…" usw. ausfüllen)
 LEGAL_NAME=
-LEGAL_STREET=
 LEGAL_CITY=
 LEGAL_COUNTRY="Österreich"
 LEGAL_EMAIL=
-LEGAL_PHONE=
 LEGAL_VAT_ID=
 
 VITE_APP_NAME="\${APP_NAME}"
@@ -336,7 +334,7 @@ verify() {
     [[ "$(http_status "http://${DEPLOY_URL#https://}/admin/login")" != "200" ]] \
         || warn "http:// wird nicht auf https:// umgeleitet (Plesk -> SSL/TLS). Ohne HTTPS laufen Kamera, Mikrofon und Login nicht."
     [[ "$(curl -s --max-time 20 "$DEPLOY_URL/impressum" || true)" != *"[LEGAL_"* ]] \
-        || warn "Impressum ist unvollständig (Platzhalter [LEGAL_…]): bash deploy.sh env LEGAL_NAME=\"…\" LEGAL_STREET=\"…\" LEGAL_CITY=\"…\" LEGAL_EMAIL=… LEGAL_PHONE=…"
+        || warn "Impressum ist unvollständig (Platzhalter [LEGAL_…]): bash deploy.sh env LEGAL_NAME=\"…\" LEGAL_CITY=\"…\" LEGAL_EMAIL=…"
 }
 
 cmd_deploy() {

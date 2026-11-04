@@ -8,8 +8,7 @@
             <h2 class="text-base font-extrabold">Angaben gemäß § 5 ECG / § 5 TMG</h2>
             <p class="mt-2">
                 {{ $legal['name'] ?: '[LEGAL_NAME – Name / Firma]' }}<br>
-                {{ $legal['street'] ?: '[LEGAL_STREET – Straße und Hausnummer]' }}<br>
-                {{ $legal['city'] ?: '[LEGAL_CITY – PLZ und Ort]' }}<br>
+                {{ $legal['city'] ?: '[LEGAL_CITY – Ort]' }}<br>
                 {{ $legal['country'] }}
             </p>
         </section>
@@ -17,8 +16,7 @@
         <section>
             <h2 class="text-base font-extrabold">Kontakt</h2>
             <p class="mt-2">
-                E-Mail: {{ $legal['email'] ?: '[LEGAL_EMAIL]' }}<br>
-                Telefon: {{ $legal['phone'] ?: '[LEGAL_PHONE]' }}
+                E-Mail: {{ $legal['email'] ?: '[LEGAL_EMAIL]' }}
             </p>
         </section>
 
