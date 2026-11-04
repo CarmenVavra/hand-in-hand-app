@@ -1,0 +1,157 @@
+@import 'tailwindcss';
+/* Archivo wird lokal ausgeliefert (DSGVO: keine Verbindung zu Google Fonts). */
+@import '@fontsource-variable/archivo/wght.css';
+
+@source '../../storage/framework/views/*.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
+
+@theme {
+    --font-sans: 'Archivo Variable', ui-sans-serif, system-ui, sans-serif;
+
+    /* Modernist-Designsystem, für Kinder bunt erweitert */
+    --color-ink: #201e1d;
+    --color-ground: #f3f2f2;
+    --color-sun: #ffd23f;
+    --color-tomato: #ec3013;
+    --color-tomato-dark: #b8250e;
+    --color-cobalt: #2d6bff;
+    --color-cobalt-dark: #1e4fcc;
+    --color-leaf: #0e8f55;
+    --color-leaf-dark: #0a6e41;
+    --color-violet: #7a3bff;
+    --color-tangerine: #e8590c;
+    --color-mute: #8a8785;
+    --color-line: #d9d6d4;
+
+    --animate-hop: hop 1.4s infinite;
+    --animate-pulse-big: pulse-big 1s infinite;
+    --animate-pulse-slow: pulse-big 1.2s infinite;
+    --animate-blink: blink 1s infinite;
+    --animate-wave: wave 1s ease-in-out infinite;
+
+    @keyframes hop {
+        0%,
+        100% {
+            transform: translateY(0);
+        }
+        30% {
+            transform: translateY(-14px);
+        }
+        60% {
+            transform: translateY(0);
+        }
+        75% {
+            transform: translateY(-5px);
+        }
+    }
+    @keyframes pulse-big {
+        0%,
+        100% {
+            transform: scale(1);
+        }
+        50% {
+            transform: scale(1.12);
+        }
+    }
+    @keyframes blink {
+        0%,
+        100% {
+            opacity: 1;
+        }
+        50% {
+            opacity: 0.25;
+        }
+    }
+    @keyframes wave {
+        0%,
+        100% {
+            height: 10px;
+        }
+        50% {
+            height: 46px;
+        }
+    }
+}
+
+@layer base {
+    html {
+        -webkit-text-size-adjust: 100%;
+        font-family: var(--font-sans);
+        color: var(--color-ink);
+        background: var(--color-ground);
+    }
+
+    button,
+    [role='button'],
+    a,
+    summary {
+        cursor: pointer;
+        -webkit-tap-highlight-color: transparent;
+        touch-action: manipulation;
+    }
+
+    /* Sichtbarer Fokus: 2px Akzentfarbe, Abstand 2px */
+    :where(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
+        outline: 2px solid var(--color-tomato);
+        outline-offset: 2px;
+    }
+
+    [x-cloak] {
+        display: none !important;
+    }
+}
+
+@layer components {
+    /* Eckiges Modernist-Raster: Linien immer 2px in Ink */
+    .rule {
+        border: 2px solid var(--color-ink);
+    }
+
+    .btn {
+        @apply inline-flex min-h-11 items-center justify-center gap-2 border-2 border-ink px-4 py-2 text-sm font-extrabold;
+    }
+
+    .btn-primary {
+        @apply bg-tomato text-white hover:bg-tomato-dark active:bg-tomato-dark;
+    }
+
+    .btn-go {
+        @apply bg-leaf text-white hover:bg-leaf-dark active:bg-leaf-dark disabled:cursor-not-allowed disabled:bg-mute disabled:opacity-60;
+    }
+
+    .btn-plain {
+        @apply bg-white text-ink hover:bg-ground;
+    }
+
+    .field-label {
+        @apply mb-2 block text-xs font-extrabold tracking-wider uppercase;
+    }
+
+    .field {
+        @apply min-h-11 w-full border-2 border-ink bg-white px-3 py-2 text-base font-semibold;
+    }
+
+    .eyebrow {
+        @apply text-xs font-bold tracking-[0.15em] text-tomato uppercase;
+    }
+}
+
+/* Kinder-Bildschirme: keine Textmarkierung, kein Zoom/Scroll-Gummiband */
+.child-screen {
+    -webkit-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none;
+    overscroll-behavior: none;
+}
+
+/* Wer Bewegung am System reduziert hat, bekommt keine Dauer-Animationen (Badge "!" bleibt sichtbar). */
+@media (prefers-reduced-motion: reduce) {
+    .animate-hop,
+    .animate-pulse-big,
+    .animate-pulse-slow,
+    .animate-blink,
+    .animate-wave {
+        animation: none !important;
+    }
+}
