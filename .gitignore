@@ -24,7 +24,6 @@ Homestead.yaml
 Thumbs.db
 
 # HandInHand
-/.deploy.env
-/.deploy-build
-/dist
 /.claude/settings.local.json
+/admin-startpasswort.txt
+/kinder-handy-link.txt

@@ -6,6 +6,24 @@
 *.md diff=markdown
 *.php diff=php
 
+*.bat text eol=crlf
+*.sh text eol=lf
+
 /.github export-ignore
 CHANGELOG.md export-ignore
 .styleci.yml export-ignore
+
+# Nicht auf den Server hochladen (deploy.sh nutzt git archive)
+/docs export-ignore
+/tests export-ignore
+/.claude export-ignore
+/UI_Mockups export-ignore
+/Konzept.pdf export-ignore
+/README.md export-ignore
+/CLAUDE.md export-ignore
+/deploy.sh export-ignore
+/start.bat export-ignore
+/stop.bat export-ignore
+/phpstan.neon export-ignore
+/phpunit.xml export-ignore
+/.editorconfig export-ignore

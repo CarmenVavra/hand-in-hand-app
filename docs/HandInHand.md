@@ -67,7 +67,18 @@ php artisan test                 # 61 Feature-Tests
 npm run build                    # Frontend
 ```
 
-## Deployment
+## Deployment (netcup, https://handinhand.carmen-vavra.at)
 
-`deploy.sh` (Entwurf, wird noch abgestimmt): prüft, baut lokal (Composer `--no-dev`, Vite), lädt per SSH hoch, migriert und wärmt Caches auf.
-Konfiguration in `.deploy.env` (Vorlage `.deploy.env.example`). `./deploy.sh --build-only` erzeugt nur das Paket für manuellen Upload.
+`bash deploy.sh` – eine Datei für alles (Muster: ServerDashboard). Voraussetzung: alles committet und gepusht, Branch `main`.
+Ablauf: Tests + Pint + Larastan -> Vite-Build -> `git archive` per SSH hochladen -> `composer install --no-dev` -> Migrationen -> Prüfung der Live-Seite.
+Beim ersten Mal legt es `.env`, `APP_KEY`, SQLite-Datenbank, Admin-Konto und einen zufälligen Kinder-Token selbst an und schreibt
+`admin-startpasswort.txt` und `kinder-handy-link.txt` (lokal, nicht im Git).
+
+| Befehl | Zweck |
+|---|---|
+| `bash deploy.sh check` | Verbindung und Live-Seite prüfen (ändert nichts) |
+| `bash deploy.sh link` | Freischalt-Link fürs Kinder-Handy anzeigen |
+| `bash deploy.sh env LEGAL_NAME="…"` | Wert in die Server-`.env` schreiben |
+| `bash deploy.sh artisan <befehl>` / `logs` | Artisan bzw. Log auf dem Server |
+
+Einmalig in Plesk: Dokumentenstamm `handinhand.carmen-vavra.at/app/public`, PHP 8.3, HTTPS + Weiterleitung, Upload-Limits >= 40 MB.
