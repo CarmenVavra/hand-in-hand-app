@@ -7,7 +7,7 @@
         <h1 class="text-[30px] leading-none font-black">Bilderbuch</h1>
     </header>
 
-    <div class="grid min-h-0 flex-1 auto-rows-[minmax(12rem,1fr)] grid-cols-1 gap-0.5 overflow-y-auto bg-ink pt-0.5">
+    <div class="grid min-h-0 flex-1 auto-rows-[minmax(9rem,1fr)] grid-cols-1 gap-0.5 overflow-y-auto bg-ink pt-0.5">
         @forelse ($books as $book)
             <a href="{{ route('child.book.view', $book['id']) }}"
                class="relative flex items-end overflow-hidden p-4 text-white"

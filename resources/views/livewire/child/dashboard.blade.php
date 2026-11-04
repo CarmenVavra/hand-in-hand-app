@@ -34,7 +34,7 @@
     </a>
 
     <a href="{{ $bookUrl }}"
-       class="flex flex-1 items-center gap-5 bg-leaf px-5 text-left text-white active:bg-leaf-dark">
+       class="flex flex-1 items-center gap-5 bg-leaf px-5 pb-[max(env(safe-area-inset-bottom),0.5rem)] text-left text-white active:bg-leaf-dark">
         <x-icon name="book" class="size-21 flex-none" />
         <span class="text-[32px] leading-[1.05] font-black">Unser<br>Bilderbuch</span>
     </a>

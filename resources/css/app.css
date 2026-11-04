@@ -137,6 +137,13 @@
     }
 }
 
+/* Sichtbare Höhe: per Skript (--app-height) gesetzt, sonst dvh/vh */
+.h-app {
+    height: 100vh;
+    height: 100dvh;
+    height: var(--app-height, 100dvh);
+}
+
 /* Kinder-Bildschirme: keine Textmarkierung, kein Zoom/Scroll-Gummiband */
 .child-screen {
     -webkit-user-select: none;

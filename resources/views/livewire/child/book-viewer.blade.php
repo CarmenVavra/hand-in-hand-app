@@ -41,7 +41,7 @@
 
             {{-- Fußleiste: Stimme (Tippen = nochmal hören) --}}
             <button type="button" x-on:click="replay()" aria-label="Stimme nochmal hören"
-                    class="absolute inset-x-0 bottom-0 flex h-30 items-center gap-1.5 border-t-2 border-white bg-ink px-6">
+                    class="absolute inset-x-0 bottom-0 flex h-30 items-center gap-1.5 border-t-2 border-white bg-ink px-6 pb-[max(env(safe-area-inset-bottom),0.5rem)]">
                 <x-icon name="speaker" class="size-10 flex-none text-sun" />
                 <span class="ml-2 flex h-[50px] items-center gap-[5px]" aria-hidden="true">
                     @foreach (range(0, 13) as $bar)

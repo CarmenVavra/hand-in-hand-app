@@ -32,7 +32,7 @@
     </div>
 
     {{-- Bedienleiste --}}
-    <div class="flex h-60 max-h-[36dvh] flex-none items-center justify-between border-t-2 border-white bg-sun px-7">
+    <div class="flex h-60 max-h-[34%] flex-none items-center justify-between border-t-2 border-white bg-sun px-7 pb-[max(env(safe-area-inset-bottom),0.5rem)]">
         <a href="{{ route('child.dashboard') }}" aria-label="Zum Hauptmenü"
            class="flex size-21 items-center justify-center border-2 border-ink bg-white text-ink">
             <x-icon name="home" class="size-11" stroke-width="2.2" />

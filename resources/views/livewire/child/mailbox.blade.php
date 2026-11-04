@@ -2,7 +2,7 @@
 
     {{-- Kachel-Übersicht --}}
     <div class="flex h-full flex-col bg-cobalt" x-bind:inert="open">
-        <header class="flex flex-none items-center gap-4 border-b-2 border-ink bg-sun px-5 py-4">
+        <header class="flex flex-none items-center gap-4 border-b-2 border-ink bg-sun px-5 py-3">
             <a href="{{ route('child.dashboard') }}" aria-label="Zum Hauptmenü"
                class="flex size-16 flex-none items-center justify-center border-2 border-ink bg-white">
                 <x-icon name="home" class="size-8.5" stroke-width="2.2" />
@@ -10,7 +10,7 @@
             <h1 class="text-[30px] leading-none font-black">Postkasten</h1>
         </header>
 
-        <div class="grid min-h-0 flex-1 auto-rows-[minmax(11rem,1fr)] grid-cols-2 gap-0.5 overflow-y-auto bg-ink pt-0.5">
+        <div class="grid min-h-0 flex-1 auto-rows-[minmax(8rem,1fr)] grid-cols-2 gap-0.5 overflow-y-auto bg-ink pt-0.5">
             @forelse ($items as $index => $item)
                 <button type="button" x-on:click="openItem({{ $index }})"
                         class="relative flex flex-col justify-end p-3.5 text-left text-white"
@@ -31,8 +31,8 @@
         </div>
 
         <a href="{{ route('child.record') }}"
-           class="flex h-24 flex-none items-center gap-4 border-t-2 border-ink bg-tomato px-5 text-white active:bg-tomato-dark">
-            <x-icon name="video" class="size-13" />
+           class="flex min-h-20 flex-none items-center gap-4 border-t-2 border-ink bg-tomato px-5 pb-[max(env(safe-area-inset-bottom),0.5rem)] text-white active:bg-tomato-dark">
+            <x-icon name="video" class="size-11" />
             <span class="text-[26px] font-black">{{ $sendLabel }}</span>
         </a>
     </div>
