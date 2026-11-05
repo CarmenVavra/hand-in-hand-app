@@ -4,8 +4,8 @@
         {
             "name": "handinhand",
             "runtimeExecutable": "php",
-            "runtimeArgs": ["artisan", "serve", "--host=127.0.0.1", "--port=8600"],
-            "port": 8600
+            "runtimeArgs": ["artisan", "serve", "--host=127.0.0.1", "--port=9150"],
+            "port": 9150
         }
     ]
 }

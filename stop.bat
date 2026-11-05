@@ -2,8 +2,8 @@
 setlocal
 title HandInHand - Stop
 
-rem Beendet PHP-Server (Port 8600) und Vite (Port 5186)
-powershell -NoProfile -Command "Get-NetTCPConnection -LocalPort 8600,5186 -State Listen -ErrorAction SilentlyContinue | ForEach-Object { Stop-Process -Id $_.OwningProcess -Force -ErrorAction SilentlyContinue }"
+rem Beendet PHP-Server (Port 9150) und Vite (Port 5186)
+powershell -NoProfile -Command "Get-NetTCPConnection -LocalPort 9150,5186 -State Listen -ErrorAction SilentlyContinue | ForEach-Object { Stop-Process -Id $_.OwningProcess -Force -ErrorAction SilentlyContinue }"
 
 rem Vite-Marker entfernen (sonst sucht die App nach dem beendeten Dev-Server)
 if exist "%~dp0public\hot" del /q "%~dp0public\hot"

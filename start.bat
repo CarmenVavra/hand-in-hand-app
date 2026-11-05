@@ -3,8 +3,8 @@ setlocal
 cd /d "%~dp0"
 title HandInHand - Start
 
-rem HandInHand starten: Backend (PHP-Server, Port 8600) + Frontend (Vite, Port 5186)
-rem   start.bat        -> nur auf diesem Rechner (http://localhost:8600)
+rem HandInHand starten: Backend (PHP-Server, Port 9150) + Frontend (Vite, Port 5186)
+rem   start.bat        -> nur auf diesem Rechner (http://localhost:9150)
 rem   start.bat lan    -> auch im WLAN erreichbar (Handy-Test; Kamera braucht dort HTTPS, siehe docs\HandInHand.md)
 
 set HOST=127.0.0.1
@@ -29,16 +29,16 @@ if not exist "database\database.sqlite" (
 echo [3/3] Datenbank wird aktualisiert ...
 call php artisan migrate --force || goto :fehler
 
-start "HandInHand PHP" /min cmd /c "php artisan serve --host=%HOST% --port=8600"
+start "HandInHand PHP" /min cmd /c "php artisan serve --host=%HOST% --port=9150"
 start "HandInHand Vite" /min cmd /c "npm run dev"
 
 echo.
 echo HandInHand laeuft:
-echo   Kinder-App:  http://localhost:8600/home
-echo   Admin:       http://localhost:8600/admin
+echo   Kinder-App:  http://localhost:9150/home
+echo   Admin:       http://localhost:9150/admin
 echo Beenden mit stop.bat
 timeout /t 3 >nul
-start "" "http://localhost:8600/home"
+start "" "http://localhost:9150/home"
 exit /b 0
 
 :fehler

@@ -6,7 +6,7 @@ Grundlage: `Konzept.pdf` und `UI_Mockups/design_handoff_handinhand/`.
 ## Starten (lokal)
 
 ```bash
-start.bat        # PHP-Server (8600) + Vite (5173), öffnet http://localhost:8600/home
+start.bat        # PHP-Server (9150) + Vite (5186), öffnet http://localhost:9150/home
 stop.bat         # beendet beides
 start.bat lan    # auch im WLAN erreichbar
 ```
